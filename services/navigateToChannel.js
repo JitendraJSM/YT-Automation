@@ -1,3 +1,15 @@
+/*          Module Description
+   1. Checks the url to decides url is channel url / shorts url / video url.
+   2. Clicks on like button.
+   3. Click to channel name to navigate to that channel.
+   4. Waits for channel page banner to load retuns true if loaded else return false.
+
+   Selectors: 
+   - Channel name selector on shorts page : "ytd-channel-name#channel-name.style-scope.reel-player-header-renderer";
+   - Channel name selector on channel page : "ytd-channel-name#channel-name.style-scope.ytd-video-owner-renderer";
+   - Page Banner selector on channal page : "#page-header-banner";
+   - Like button selector on shorts & video page : "button[aria-pressed='false'][aria-label^='like']";
+*/
 const utils = require("../utils/utils.js");
 
 const hitLikeBTN = async (page) => {
@@ -55,6 +67,10 @@ module.exports = async (browser, url) => {
         "ytd-channel-name#channel-name.style-scope.ytd-video-owner-renderer"; // channel name Selector
       await waitLikeAndClickOnChannelName(selector, 8, 12);
     }
+  } else {
+    console.log(
+      `Url does not contain @ or shorts or watch. So the url is unrecognized: ${url}`
+    );
   }
 
   let flagEL = await page.waitForSelector(

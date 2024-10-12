@@ -1,0 +1,3 @@
+temp notes for getting time of video
+document.querySelectorAll('[role="slider"][aria-label="Seek slider"]:not([aria-valuetext])')[0].aria-valuenow
+document.querySelectorAll('.ytp-time-duration')[0].textContent
