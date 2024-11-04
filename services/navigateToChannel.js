@@ -24,7 +24,15 @@ const hitLikeBTN = async (page) => {
 module.exports = async (browser, url) => {
   console.log("navigateToChannel Started......");
 
-  let page = await browser.newPage();
+  let pages = await browser.pages();
+  let page = pages.find((p) => p.url().includes("youtube.com"));
+
+  /* if u want to always open url in new page then uncomment below line and comment above 2 lines*/
+  // let page = await browser.newPage();
+
+  pages.forEach((p) => (p === page ? null : p.close())); // Close all other pages
+
+  await page.bringToFront();
   await page.goto(url);
 
   await page.waitForSelector("#logo-icon", utils.timeout120Sec);

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 exports.delay = delay;
 
@@ -78,3 +79,8 @@ try {
    console.error(error);
 }
    */
+module.exports.dc = (msgToPrintOnConsoleOnlyInDevMode) => {
+  if (process.env.ENV == "dev") {
+    console.log(msgToPrintOnConsoleOnlyInDevMode);
+  }
+};

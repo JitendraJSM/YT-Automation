@@ -1,3 +1,7 @@
 temp notes for getting time of video
 document.querySelectorAll('[role="slider"][aria-label="Seek slider"]:not([aria-valuetext])')[0].aria-valuenow
 document.querySelectorAll('.ytp-time-duration')[0].textContent
+
+Edits of this commit:
+1. Every time a new page gets opened by nevigateToChannel.js even if youtube page is opened so going to change.
+2. Config file and dotenv library is added for dev comments in utils/utils.js i.e. dc("message")
